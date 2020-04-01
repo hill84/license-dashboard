@@ -1,0 +1,53 @@
+Si richiede la realizzazione di un panello utente per la gestione di un sistema di licenze
+associabili ad un dispositivo personale.
+I dispositivi possono avere uno dei seguenti sistemi operativi: Android, iOS, Windows,
+OSX
+I dispositivi sono identificati da una stringa (id) univoca; ed hanno altre proprietà (come
+il già citato sistema operativo); la versione del sistema operativo (es, “iOS 13”,
+“Android 9”). Il candidato è libero di aggiungere le proprietà che ritenesse necessario.
+Le licenze disponibili all’utente sono limitate per numero, per tipo di sistema operativo e
+per durata.
+Esempio 1: l’utente ha a disposizione 6 licenze in totale per la durata di un
+anno; 2 licenze potranno essere assegnate a dispositivi con sistema operativo
+Android, 2 licenze a dispositivi con sistema operativo Windows e 2 licenze a
+dispositivi con iOS
+Esempio 2: l’utente ha a disposizione 5 licenze in totale per la durata di 6
+mesi, ma 4 licenze potranno essere assegnate a dispositivi con sistema
+operativo Android, 1 licenza a dispositivi con sistema operativo iOS
+La richiesta di licenza viene effettuata dal dispositivo in modo asincrono rispetto all’uso
+che l’utente farà del pannello. Il candidato può simulare la richiesta di licenza da parte
+del dispositivo: non è richiesto lo sviluppo di un’app mobile.
+L’utente potrà vedere le richieste ed agire di conseguenza: accettarle, rifiutarle o
+lasciarle in uno stato di attesa.
+Esempio: il dispositivo farà richiesta alle 04:00, l’utente si collegherà al
+pannello alle 8:30; fino ad allora la richiesta resterà in uno stato di attesa.
+Nel caso dell’accettazione verrà assegnata al dispositivo una licenze tra quelle libere (se
+disponibili). Nel caso l’utente decida di rifiutare, la richiesta dovrà comunque essere
+salvata e visualizzabile in uno storico di dispositivi rifiutati; mostrando l’id del
+dispositivo ed altre proprietà (Es, il sistema operativo del dispositivo rifiutato)
+Ad applicazione appena installata, il database con le licenze disponibili sarà vuoto.
+All’utente verrà consegnato un file di licenze (un CSV) che dovrà caricare in autonomia
+nel pannello (per il formato del file si veda di seguito).
+Il pannello dovrà rendere chiara la visualizzazione:
+- dell’utilizzo corrente delle licenze: quelle libere, quelle occupate; raggruppate per
+sistema operativo
+- l’elenco dei dispositivi correntemente licenziati, di quelli rifiuatati e di quelli in stato di
+attesa
+- per ogni licenza associata ad un dispositivo ne dovrà essere visualizzata la data di
+scadenza, l’id del dispositivo ed altre proprietà a discrezione (es, il sistema operativo)
+Vincoli tecnologici:
+- La base dati deve essere MongoDB
+- Il frontend deve essere in React
+La build del progetto deve poter essere possibile anche su una workstation o server di
+terzi (es, un server Jenkins) senza modifiche.
+Formato del file delle licenze:
+license_id;expire_date;os
+CFZZ;202012312359;android
+XASD;202012312359;android
+REOF;202030062359;ios
+CCVD;202030062359;ios
+RPGR;202112312359;windows
+POFW;202030062359;osx
+LBRE;202031122360;android
+RGER;202112312359;windows
+BTRG;202030062359;ios
