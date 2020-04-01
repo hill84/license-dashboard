@@ -1,0 +1,18 @@
+.dashboard {
+  text-align: left;
+}
+
+.noList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.noList li {
+  line-height: 32px;
+  border-top: 1px solid rgba(0, 0, 0, .1);
+}
+
+.noList li:first-child {
+  border-top: none;
+}
