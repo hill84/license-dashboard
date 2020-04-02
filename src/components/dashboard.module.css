@@ -9,10 +9,108 @@
 }
 
 .noList li {
+  position: relative;
   line-height: 32px;
-  border-top: 1px solid rgba(0, 0, 0, .1);
+  background-color: white;
+  border-radius: 99px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .03);
+  padding: 4px 16px;
+  margin-bottom: 10px;
+  font-size: .8rem;
+  will-change: opacity;
+  transition: all .2s ease-in-out;
+  animation: showIn .2s ease-in-out;
 }
 
-.noList li:first-child {
-  border-top: none;
+.noList li .absolute {
+  position: absolute;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  padding: 7px;
+  z-index: 2;
+}
+
+.noList li .absolute.right { right: 0; }
+
+.noList li .absolute.left { left: -40px; }
+
+.noList li .absolute button {
+  background-color: white;
+  color: var(--primaryClr);
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: all .2s ease-in-out;
+  animation: popIn .15s ease-in-out;
+}
+
+.noList li .absolute.left button {
+  opacity: 0;
+  background-color: var(--redClr);
+  color: white;
+}
+
+.noList li[data-status="accepted"] {
+  background-color: var(--greenClr);
+  color: white;
+}
+
+.noList li[data-status="refused"] {
+  background-color: var(--redClr);
+  color: white;
+}
+
+.noList li[data-selectable="true"], 
+.noList li[data-status="pending"] {
+  opacity: 1;
+}
+
+.noList li[data-selectable="true"]:hover, 
+.noList li[data-status="pending"]:hover {
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .05);
+}
+
+.noList li[data-selected="true"] {
+  box-shadow: none !important;
+  background-color: var(--primaryClr);
+  color: white;
+}
+
+.noList li[data-selected="true"] .absolute.right button, 
+.noList li .absolute.left:hover button {
+  pointer-events: initial;
+  opacity: 1;
+}
+
+.noList li[data-expired="true"], .noList li[data-assigned="true"] {
+  opacity: .4;
+  box-shadow: none;
+}
+
+.noList .legend {
+  background-color: transparent;
+  box-shadow: none;
+  font-weight: 600;
+  font-size: .7rem;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, .2);
+  margin: 0;
+}
+
+@keyframes showIn {
+  from {
+    max-height: 0;
+    line-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    opacity: 0;
+  }
+  to { max-height: 50px; }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0); }
 }
