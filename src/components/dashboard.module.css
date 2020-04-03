@@ -99,6 +99,25 @@
   margin: 0;
 }
 
+input[type="file"] {
+  display: none;
+}
+
+.fileUpload {
+  display: block;
+  position: relative;
+  line-height: 32px;
+  background-color: white;
+  border-radius: 99px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .03);
+  padding: 4px 16px;
+  margin-bottom: 10px;
+  font-size: .8rem;
+  will-change: opacity;
+  transition: all .2s ease-in-out;
+  animation: showIn .2s ease-in-out;
+}
+
 @keyframes showIn {
   from {
     max-height: 0;

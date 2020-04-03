@@ -16,7 +16,6 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 db.settings({});
 
-// REQUESTS
 export const requestsRef = db.collection('requests');
 export const requestRef = id => requestsRef.doc(id);
 

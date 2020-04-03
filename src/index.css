@@ -22,8 +22,9 @@ code {
   text-transform: uppercase;
 }
 
-button, input[type="submit"] {
+button, input[type="submit"], [data-type="button"] {
   -webkit-appearance: none;
+  display: inline-block;
   border: none;
   padding: .3rem .7rem;
   margin: auto;

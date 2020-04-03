@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import styles from './dashboard.module.css';
-import { licenseRef, licensesRef, requestRef, requestsRef } from '../firebase';
 import Papa from 'papaparse';
+import React, { useCallback, useEffect, useState } from 'react';
+import { licenseRef, licensesRef, requestRef, requestsRef } from '../firebase';
+import styles from './dashboard.module.css';
 
 const unsub = {
   fetchRequests: null,
@@ -15,7 +15,7 @@ const Dashboard = () => {
   const [licenses, setLicenses] = useState(null);
   const [requests, setRequests] = useState(null);
   const [loadingRequests, setLoadingRequests] = useState(true);
-  const [loadingLicenses, setLoadingLicenses] = useState(false);
+  const [loadingLicenses, setLoadingLicenses] = useState(true);
   const [selectedRequest, setSelectedRequest] = useState(null);
 
   const fetchRequests = useCallback(() => {
@@ -254,9 +254,10 @@ const Dashboard = () => {
                   </div>
                 </>
               ) : (
-                <li className="text-center">
-                  <input type="file" accept=".csv" onChange={onImportCSV} />
-                </li>
+                <div className="text-center">
+                  <label for="file-upload" data-type="button" className={styles.fileUpload}>Upload CSV</label>
+                  <input type="file" id="file-upload" accept=".csv" onChange={onImportCSV} />
+                </div>
               ))}
             </ul>
           </div>
