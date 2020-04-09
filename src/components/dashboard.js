@@ -164,6 +164,7 @@ const Dashboard = () => {
       <div className="container">
         <div className="row" style={{ padding: '15px 0' }}>
           <div className="col">
+            <h2>Requests</h2>
             <ul className={styles.noList}>
               <li className={styles.legend}>
                 <div className="row">
@@ -218,6 +219,7 @@ const Dashboard = () => {
             </ul>
           </div>
           <div className="col-lg-3 col-sm-12">
+            <h2>Licenses</h2>
             <ul className={styles.noList}>
               <li className={styles.legend}>
                 <div className="row">
